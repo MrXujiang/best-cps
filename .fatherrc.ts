@@ -4,7 +4,7 @@ import { join } from 'path';
 // utils must build before core
 // runtime must build before renderer-react
 // components dependencies order: form -> table -> list
-const headPkgs: string[] = ['utils', 'skeleton', 'list'];
+const headPkgs: string[] = ['utils', 'skeleton'];
 const tailPkgs = readdirSync(join(__dirname, 'packages')).filter(
   (pkg) => pkg.charAt(0) !== '.' && !headPkgs.includes(pkg),
 );

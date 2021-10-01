@@ -14,7 +14,7 @@
   resolved "https://registry.nlark.com/@ant-design/icons-svg/download/@ant-design/icons-svg-4.1.0.tgz#480b025f4b20ef7fe8f47d4a4846e4fee84ea06c"
   integrity sha1-SAsCX0sg73/o9H1KSEbk/uhOoGw=
 
-"@ant-design/icons@^4.0.0", "@ant-design/icons@^4.1.0", "@ant-design/icons@^4.2.1", "@ant-design/icons@^4.3.0", "@ant-design/icons@^4.6.2", "@ant-design/icons@^4.6.3":
+"@ant-design/icons@^4.2.1", "@ant-design/icons@^4.3.0", "@ant-design/icons@^4.6.2", "@ant-design/icons@^4.6.3":
   version "4.6.4"
   resolved "https://registry.nlark.com/@ant-design/icons/download/@ant-design/icons-4.6.4.tgz?cache=0&sync_timestamp=1630069411155&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40ant-design%2Ficons%2Fdownload%2F%40ant-design%2Ficons-4.6.4.tgz#21b037dbb90ee1bb7c632cca057006e57d992fd9"
   integrity sha1-IbA327kO4bt8YyzKBXAG5X2ZL9k=
@@ -24,17 +24,6 @@
     "@babel/runtime" "^7.11.2"
     classnames "^2.2.6"
     rc-util "^5.9.4"
-
-"@ant-design/pro-card@1.14.22":
-  version "1.14.22"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.14.22.tgz#81308d62318b8186351ce85a3f569c9cc89ca183"
-  integrity sha512-a+GsZMFv2REqKUfbhXFYcJLRwPbrUnCuhQpnIXjqTe+j13GFGd+yrU7l308lzC7P8anh8k+6Qqe2dOMYmYAMlw==
-  dependencies:
-    "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-utils" "1.24.6"
-    classnames "^2.2.6"
-    omit.js "^2.0.2"
-    rc-util "^5.4.0"
 
 "@ant-design/pro-field@1.22.5":
   version "1.22.5"
@@ -82,25 +71,6 @@
   integrity sha512-vzdqJoVq0fqNEqak9uZfkA1idPgxX2h5LY2AvN3rWHYM7qtP3MSYEgJ+gmvwXSFytH32nOHrhHeV+vUN7RlG9g==
   dependencies:
     use-media-antd-query "^1.0.6"
-
-"@ant-design/pro-table@2.54.4":
-  version "2.54.4"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-table/-/pro-table-2.54.4.tgz#4741f5d7fb673c584889beb406def2d7b9650379"
-  integrity sha512-BLlaQa0MPe6ts8InBifvaDcIJjDNfH2LT1aCKCHqU8Q1vAeB01jMUEC9RFNawstBNEPUCP9CpZlAU+yGxIBZrw==
-  dependencies:
-    "@ant-design/icons" "^4.1.0"
-    "@ant-design/pro-field" "1.22.5"
-    "@ant-design/pro-form" "1.42.1"
-    "@ant-design/pro-provider" "1.4.19"
-    "@ant-design/pro-utils" "1.24.6"
-    classnames "^2.2.6"
-    moment "^2.24.0"
-    omit.js "^2.0.2"
-    rc-util "^5.0.1"
-    react-sortable-hoc "^2.0.0"
-    unstated-next "^1.1.0"
-    use-json-comparison "^1.0.5"
-    use-media-antd-query "^1.1.0"
 
 "@ant-design/pro-utils@1.24.6":
   version "1.24.6"
@@ -17588,7 +17558,7 @@ rc-upload@~4.3.0:
     classnames "^2.2.5"
     rc-util "^5.2.0"
 
-rc-util@4.x, rc-util@^4.0.4, rc-util@^4.15.3, rc-util@^4.19.0, rc-util@^4.4.0:
+rc-util@4.x, rc-util@^4.0.4, rc-util@^4.15.3, rc-util@^4.4.0:
   version "4.21.1"
   resolved "https://registry.nlark.com/rc-util/download/rc-util-4.21.1.tgz#88602d0c3185020aa1053d9a1e70eac161becb05"
   integrity sha1-iGAtDDGFAgqhBT2aHnDqwWG+ywU=
@@ -21252,11 +21222,6 @@ unset-value@^1.0.0:
     has-value "^0.3.1"
     isobject "^3.0.0"
 
-unstated-next@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npm.taobao.org/unstated-next/download/unstated-next-1.1.0.tgz#7bb4911a12fdf3cc8ad3eb11a0b315e4a8685ea8"
-  integrity sha1-e7SRGhL988yK0+sRoLMV5KhoXqg=
-
 upath@^1.1.1, upath@^1.2.0:
   version "1.2.0"
   resolved "https://registry.nlark.com/upath/download/upath-1.2.0.tgz#8f66dbcd55a883acdae4408af8b035a5044c1894"
@@ -21331,12 +21296,7 @@ use-json-comparison@^1.0.5:
   resolved "https://registry.nlark.com/use-json-comparison/download/use-json-comparison-1.0.6.tgz?cache=0&sync_timestamp=1622793910429&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fuse-json-comparison%2Fdownload%2Fuse-json-comparison-1.0.6.tgz#a012bbc258ce745db1f56745dc653f575226cb21"
   integrity sha1-oBK7wljOdF2x9WdF3GU/V1ImyyE=
 
-use-media-antd-query@1.0.6:
-  version "1.0.6"
-  resolved "https://registry.nlark.com/use-media-antd-query/download/use-media-antd-query-1.0.6.tgz#2395fc52a9bc810fa7360bff43eb84609eee1b2f"
-  integrity sha1-I5X8Uqm8gQ+nNgv/Q+uEYJ7uGy8=
-
-use-media-antd-query@^1.0.6, use-media-antd-query@^1.1.0:
+use-media-antd-query@^1.0.6:
   version "1.1.0"
   resolved "https://registry.nlark.com/use-media-antd-query/download/use-media-antd-query-1.1.0.tgz#f083ad7e292c1c0261b6bbfaac0edc3e0920d85d"
   integrity sha1-8IOtfiksHAJhtrv6rA7cPgkg2F0=

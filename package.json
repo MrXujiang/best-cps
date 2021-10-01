@@ -14,6 +14,8 @@
     "deploy": "cross-env SITE_DEPLOY='TRUE' npm run site && gh-pages -d ./dist",
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx  --fix --format=pretty ./packages && npm run lint:prettier && npm run check-deps",
     "lint:prettier": "npm run prettier &&  git diff && prettier --version && prettier --check \"packages/**/**.{js,jsx,tsx,ts,less,md,json}\" --end-of-line auto",
+    "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./packages/**/src",
+    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
     "prettier": "prettier --write \"**/**.{js,jsx,tsx,ts,less,md,json}\"",
     "release": "npm run test && node ./scripts/release.js",
     "site": "node ./scripts/preDeploy && cross-env SITE_DEPLOY='TRUE' dumi build",
@@ -136,8 +138,8 @@
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
-    "pre-commit": "pretty-quick --staged",
-    "commit-msg": "node ./commitlint.js"
+    "pre-commit": "npm run lint:js",
+    "commit-msg": "node ./commitlint.js verify-commit"
   },
   "size-limit": [
     {

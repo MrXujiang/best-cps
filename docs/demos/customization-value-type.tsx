@@ -1,11 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import type { ProFormColumnsType } from '@ant-design/pro-form';
-import { BetaSchemaForm } from '@ant-design/pro-form';
 import ProProvider from '@ant-design/pro-provider';
 import { Input, Space, Tag } from 'antd';
-import ProTable from '@ant-design/pro-table';
-import ProDescriptions from '@ant-design/pro-descriptions';
-import ProCard from '@ant-design/pro-card';
 
 const valueEnum = {
   0: 'close',
@@ -173,42 +169,6 @@ export default () => {
         },
       }}
     >
-      <ProCard
-        title="SchemaForm"
-        bordered
-        style={{
-          marginBottom: 24,
-        }}
-      >
-        <BetaSchemaForm<TableListItem, 'link' | 'tags'>
-          initialValues={initialValue}
-          columns={columns}
-          title="自定义 valueType"
-        />
-      </ProCard>
-      <ProCard
-        title="ProTable"
-        bordered
-        style={{
-          marginBottom: 24,
-        }}
-      >
-        <ProTable
-          columns={tableColumns}
-          pagination={false}
-          toolBarRender={false}
-          dataSource={[initialValue]}
-        />
-      </ProCard>
-      <ProCard
-        title="ProDescriptions"
-        bordered
-        style={{
-          marginBottom: 24,
-        }}
-      >
-        <ProDescriptions columns={tableColumns} dataSource={initialValue} />
-      </ProCard>
     </ProProvider.Provider>
   );
 };

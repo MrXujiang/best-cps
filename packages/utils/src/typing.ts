@@ -3,7 +3,6 @@ import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { Moment } from 'moment';
 import type { ReactNode } from 'react';
-import type { UseEditableUtilType } from './useEditableArray';
 
 export type PageInfo = {
   pageSize: number;
@@ -154,10 +153,7 @@ export type ProCoreActionType<T = {}> = {
   clearSelected?: () => void;
   /** @name p页面的信息都在里面 */
   pageInfo?: PageInfo;
-} & Omit<
-  UseEditableUtilType,
-  'newLineRecord' | 'editableKeys' | 'actionRender' | 'setEditableRowKeys'
-> &
+} &
   T;
 
 type ProSchemaValueType<ValueType> = (ValueType | ProFieldValueType) | ProFieldValueObjectType;

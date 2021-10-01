@@ -3,7 +3,7 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "changelog": {
-    "repo": "ant-design/pro-components",
+    "repo": "MrXujiang/best-cps",
     "cacheDir": ".changelog"
   },
   "ignoreChanges": [

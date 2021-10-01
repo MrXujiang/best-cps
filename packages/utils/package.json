@@ -1,21 +1,19 @@
 {
-  "name": "xu-pro-utils",
+  "name": "xu-utils",
   "version": "1.24.7",
-  "description": "@ant-design/pro-utils",
+  "description": "xu-utils工具包",
   "keywords": [
-    "antd",
-    "admin",
-    "ant-design",
-    "ant-design-pro"
+    "javascript",
+    "js tool"
   ],
   "sideEffects": [
     "*.less"
   ],
-  "homepage": "https://github.com/ant-design/pro-components/tree/master/packages/utils#readme",
-  "bugs": "http://github.com/umijs/plugins/issues",
+  "homepage": "https://github.com/MrXujiang/best-cps/tree/master/packages/utils#readme",
+  "bugs": "https://github.com/MrXujiang/best-cps/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ant-design/pro-components"
+    "url": "https://github.com/MrXujiang/best-cps"
   },
   "license": "MIT",
   "main": "lib/index.js",

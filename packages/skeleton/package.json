@@ -1,21 +1,19 @@
 {
-  "name": "xu-pro-skeleton",
+  "name": "xu-skeleton",
   "version": "1.0.2",
-  "description": "@ant-design/pro-skeleton",
+  "description": "xu-skeleton",
   "keywords": [
     "antd",
-    "admin",
-    "ant-design",
-    "ant-design-pro"
+    "react-component"
   ],
   "sideEffects": [
     "*.less"
   ],
-  "homepage": "https://github.com/ant-design/pro-components/tree/master/packages/skeleton#readme",
-  "bugs": "http://github.com/umijs/plugins/issues",
+  "homepage": "https://github.com/MrXujiang/best-cps/tree/master/packages/skeleton#readme",
+  "bugs": "https://github.com/MrXujiang/best-cps/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ant-design/pro-components"
+    "url": "https://github.com/MrXujiang/best-cps"
   },
   "license": "MIT",
   "main": "lib/index.js",
