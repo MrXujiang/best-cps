@@ -1,0 +1,20 @@
+{
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "changelog": {
+    "repo": "ant-design/pro-components",
+    "cacheDir": ".changelog"
+  },
+  "ignoreChanges": [
+    "**/*.md",
+    "**/*.test.ts",
+    "**/*.e2e.ts",
+    "**/demos/**",
+    "**/fixtures/**",
+    "**/dist/**",
+    "**/lib/**",
+    "**/es/**",
+    "**/test/**"
+  ]
+}
