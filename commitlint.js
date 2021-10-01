@@ -12,7 +12,7 @@ const option = args._[0];
 // 提取commit信息
 const msgPath = process.env.GIT_PARAMS || process.env.HUSKY_GIT_PARAMS;
 const msg = require('fs').readFileSync(msgPath, 'utf-8').trim();
-console.log(123, process.env.GIT_PARAMS, process.env.HUSKY_GIT_PARAMS);
+console.log(123, msg);
 
 const judeCommitResult = () => {
   const commitRE =
