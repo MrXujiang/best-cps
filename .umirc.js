@@ -136,7 +136,7 @@ export default {
       },
       {
         title: '通用',
-        children: ['skeleton'],
+        children: ['skeleton', 'x6-react'],
       },
     ],
     '/en-US/components': [
@@ -146,7 +146,7 @@ export default {
       },
       {
         title: 'General',
-        children: ['skeleton'],
+        children: ['skeleton', 'x6-react'],
       },
     ],
   },

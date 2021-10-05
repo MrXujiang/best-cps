@@ -18,7 +18,7 @@ const externals = isCI
   ? tailPkgs.reduce((pre, value) => {
       return {
         ...pre,
-        [`@ant-design/pro-${value}`]: `Pro${value
+        [`xu-${value}`]: `Pro${value
           .toLowerCase()
           .replace(/( |^)[a-z]/g, (L) => L.toUpperCase())}`,
       };

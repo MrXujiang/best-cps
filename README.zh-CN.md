@@ -1,41 +1,56 @@
-[English](./README.en-US.md) | 简体中文 | [Español](./README.es-PR.md)
+## 背景
+在开发大型项目时, 我们通常会遇到同一工程依赖不同组件包, 同时不同的组件包之间还会相互依赖的问题, 那么如何管理组织这些依赖包就是一个迫在眉睫的问题.
 
-# ProComponents
+![image.png](http://cdn.dooring.cn/dr/1633425666915.png)
 
-这里放置了 pro 系列组件，用于支撑重型组件
+我们目前已有的方案有: **Multirepo**(多个依赖包独立进行git管理) 和 **Monorepo**(所有依赖库完全放入一个项目工程). 
 
-![coverage CI](https://github.com/ant-design/pro-components/workflows/coverage%20CI/badge.svg) ![Node CI](https://github.com/ant-design/pro-components/workflows/Node%20CI/badge.svg) ![Deploy CI](https://github.com/ant-design/pro-components/workflows/Deploy%20CI/badge.svg) [![](https://codecov.io/gh/ant-design/pro-components/branch/master/graph/badge.svg)](https://codecov.io/gh/ant-design/pro-components) [![ docs by dumi](https://img.shields.io/badge/docs%20by-dumi-blue)](https://d.umijs.org/) [![Build With father](https://img.shields.io/badge/build%20with-father-028fe4.svg)](https://github.com/umijs/father/) [![](https://badgen.net/badge/icon/Ant%20Design?icon=https://gw.alipayobjects.com/zos/antfincdn/Pp4WPgVDB3/KDpgvguMpGfqaHPjicRK.svg&label)](https://ant.design) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+**Multirepo**的缺点在于每个库变更之后，需要发布到线上，然后在项目中重新安装, 打包, 发布, 最后才能更新，这样如果依赖关系越复杂就越难以维护。**Monorepo**最大的缺点就是不便于代码的复用和共享。
 
-## 🖥 浏览器兼容性
+为了解决上述的问题, **lerna** 这款工具诞生了, 它可以方便的管理具有多个包的 **JavaScript** 项目。同时对于组件包的开发者和维护者,  为了让团队其他成员更好的理解和使用我们开发的组件, 搭建组件文档和 **demo** 就显得格外重要.
 
-- 现代浏览器和 Internet Explorer 11 (with [polyfills](https://stackoverflow.com/questions/57020976/polyfills-in-2019-for-ie11))
-- [Electron](https://www.electronjs.org/)
+![image.png](http://cdn.dooring.cn/dr/1633426696834.png)
 
-| [![edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png)](http://godban.github.io/browsers-support-badges/) | [![Edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png)](http://godban.github.io/browsers-support-badges/) | [![chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png)](http://godban.github.io/browsers-support-badges/) | [![safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)](http://godban.github.io/browsers-support-badges/) | [![electron_48x48](https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png)](http://godban.github.io/browsers-support-badges/) |
-| --- | --- | --- | --- | --- |
-| IE11, Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
+我们对以上提到的几点问题做一个总结:
 
-## 参与贡献
+- 大型项目中如何管理组织依赖包及其版本问题
+- 如何高效低成本的搭建简单易用的组件文档
+- 如何配置eslint代码规范和代码提交规范
 
-我们非常欢迎你的贡献，你可以通过以下方式和我们一起共建 😃 ：
+接下来我将针对以上问题一一来给出解答.  如果大家想看实际的案例, 可以参考:
 
-- 在你的公司或个人项目中使用 Ant Design Pro，umi 和 ProComponents。
-- 通过 [Issue](https://github.com/ant-design/pro-components/issues) 报告 bug 或进行咨询。
-- 提交 [Pull Request](https://github.com/ant-design/pro-components/pulls) 改进 ProComponents 的代码。
+- [best-cps | 基于lerna + dumi搭建的多包管理实践](https://github.com/MrXujiang/best-cps)
 
-## 组件看板
+## 大型项目中如何管理组织依赖包及其版本问题
 
-| 组件 | 下载量 | 版本 |
-| --- | --- | --- |
-| pro-layout | [![layout](https://img.shields.io/npm/dw/@ant-design/pro-layout.svg)](https://www.npmjs.com/package/@ant-design/pro-layout) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-layout.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-layout) |
-| pro-table | [![table](https://img.shields.io/npm/dw/@ant-design/pro-table.svg)](https://www.npmjs.com/package/@ant-design/pro-table) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-table.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-table) |
-| pro-field | [![field](https://img.shields.io/npm/dw/@ant-design/pro-field.svg)](https://www.npmjs.com/package/@ant-design/pro-field) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-field.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-field) |
-| pro-form | [![form](https://img.shields.io/npm/dw/@ant-design/pro-form.svg)](https://www.npmjs.com/package/@ant-design/pro-form) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-form.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-form) |
-| pro-skeleton | [![skeleton](https://img.shields.io/npm/dw/@ant-design/pro-skeleton.svg)](https://www.npmjs.com/package/@ant-design/pro-skeleton) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-skeleton.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-skeleton) |
-| pro-list | [![list](https://img.shields.io/npm/dw/@ant-design/pro-list.svg)](https://www.npmjs.com/package/@ant-design/pro-list) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-list.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-list) |
-| pro-card | [![card](https://img.shields.io/npm/dw/@ant-design/pro-card.svg)](https://www.npmjs.com/package/@ant-design/pro-card) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-card.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-card) |
-| pro-descriptions | [![descriptions](https://img.shields.io/npm/dw/@ant-design/pro-card.svg)](https://www.npmjs.com/package/@ant-design/pro-descriptions) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-descriptions.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-descriptions) |
+这个问题主要用我上面的提到的 **lerna** 工具来解决. 目前我们比较熟悉的 **babel**, **create-react-app**, **vue-cli** 等都使用了 **lerna**. 
 
-## LICENSE
+在没使用 **lerna** 时, 我们不同库的组织形式可能如下:
 
-MIT
+![image.png](http://cdn.dooring.cn/dr/1633429548344.png)
+
+使用 **lerna** 之后的库组织结构:
+
+![image.png](http://cdn.dooring.cn/dr/1633429780559.png)
+
+以上两个是我做的简图, 基本可以对比出使用 **lerna** 前后的差异,  **lerna** 的作用是把多个项目或模块拆分为多个 **packages** 放入一个git仓库进行管理。我们可以使用它提供的命令轻松的对不同项目进行管理 , 如下:
+
+- lerna boostrap 自动解决packages之间的依赖关系，对于packages内部的依赖会直接采用symlink的方式关联
+- lerna publish 依赖git检测文件改动，自动发布，管理版本号
+- lerna create 创建一个 lerna 管理的package包
+- lerna clean 删除所有包下面的node_modules目录，也可以删除指定包下面的node_modules
+
+同时 **lerna** 还会根据 git 提交记录，自动生成 changelog. 当然 **lerna** 还提供了很多有用的命令, 大家感兴趣可以在官网学习.
+
+## 如何高效低成本的搭建简单易用的组件文档
+
+对于组件文档, 市面上也有很多开源的工具, 比如 vue-press, storybook, docz等, 因为我最近的项目多为 react, 这里我使用的是 dumi. 之前在分享实现滑动验证码组件的时候已经和大家分享的 dumi的使用, 大家可以参考我之前的文章:
+- [从零开发一款轻量级滑动验证码插件](https://juejin.cn/post/7007615666609979400)
+
+
+## 如何配置eslint代码规范和代码提交规范
+
+
+
+
+

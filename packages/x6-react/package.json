@@ -1,0 +1,46 @@
+{
+  "name": "xu-x6-react",
+  "version": "1.0.2",
+  "description": "x6-react",
+  "keywords": [
+    "antd",
+    "react-component",
+    "x6",
+    "x6-react"
+  ],
+  "sideEffects": [
+    "*.less"
+  ],
+  "homepage": "https://github.com/MrXujiang/best-cps/tree/master/packages/x6-react#readme",
+  "bugs": "https://github.com/MrXujiang/best-cps/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrXujiang/best-cps"
+  },
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "es",
+    "dist"
+  ],
+  "browserslist": [
+    "last 2 versions",
+    "Firefox ESR",
+    "> 1%",
+    "ie >= 11"
+  ],
+  "dependencies": {
+    "@antv/x6": "^1.28.0",
+    "use-media-antd-query": "^1.0.6"
+  },
+  "peerDependencies": {
+    "antd": "4.x",
+    "react": ">=16.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

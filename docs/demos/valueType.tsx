@@ -1,5 +1,4 @@
 ﻿import React, { useState } from 'react';
-import { BetaSchemaForm, ProFormSelect } from '@ant-design/pro-form';
 import type { ProFieldValueType } from '@ant-design/pro-utils';
 
 const valueEnum = {
@@ -73,61 +72,7 @@ export default () => {
   const [valueType, setValueType] = useState<ProFieldValueType>('text');
   return (
     <>
-      <ProFormSelect.SearchSelect
-        label="valueType 选择"
-        options={options}
-        width={200}
-        mode="single"
-        fieldProps={{
-          labelInValue: false,
-          value: valueType,
-          onChange: (value) => setValueType(value),
-        }}
-      />
-      <BetaSchemaForm<DataItem>
-        trigger={<a>点击我</a>}
-        layoutType="Form"
-        onFinish={async (values) => {
-          console.log(values);
-        }}
-        initialValues={options.reduce((pre, item) => {
-          return {
-            ...pre,
-            [item.value]: item.initialValue,
-          };
-        }, {})}
-        columns={[
-          {
-            title: '分组',
-            valueType: 'group',
-            columns: [
-              {
-                valueType,
-                title: '编辑器',
-                dataIndex: valueType || 'text',
-                valueEnum,
-                formItemProps: {
-                  rules: [
-                    {
-                      required: true,
-                      message: '此项为必填项',
-                    },
-                  ],
-                },
-                width: 'm',
-              },
-              {
-                valueType,
-                title: '只读',
-                dataIndex: valueType || 'text',
-                valueEnum,
-                readonly: true,
-                width: 'm',
-              },
-            ],
-          },
-        ]}
-      />
+      
     </>
   );
 };
