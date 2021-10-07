@@ -1,43 +1,127 @@
-# xu-pro-lerna
+## 背景
+在开发大型项目时, 我们通常会遇到同一工程依赖不同组件包, 同时不同的组件包之间还会相互依赖的问题, 那么如何管理组织这些依赖包就是一个迫在眉睫的问题.
 
-English | [简体中文](./README.zh-CN.md) | [Español](./README.es-PR.md)
+![image.png](http://cdn.dooring.cn/dr/1633425666915.png)
 
-# ProComponents
+我们目前已有的方案有: **Multirepo**(多个依赖包独立进行git管理) 和 **Monorepo**(所有依赖库完全放入一个项目工程). 
 
-The Pro Series components are placed here to support heavy-duty components.
+**Multirepo**的缺点在于每个库变更之后，需要发布到线上，然后在项目中重新安装, 打包, 发布, 最后才能更新，这样如果依赖关系越复杂就越难以维护。**Monorepo**最大的缺点就是不便于代码的复用和共享。
 
-![coverage CI](https://github.com/ant-design/pro-components/workflows/coverage%20CI/badge.svg) ![Node CI](https://github.com/ant-design/pro-components/workflows/Node%20CI/badge.svg) ![Deploy CI](https://github.com/ant-design/pro-components/workflows/Deploy%20CI/badge.svg) [![](https://codecov.io/gh/ant-design/pro-components/branch/master/graph/badge.svg)](https://codecov.io/gh/ant-design/pro-components) [![ docs by dumi](https://img.shields.io/badge/docs%20by-dumi-blue)](https://d.umijs.org/) [![Build With father](https://img.shields.io/badge/build%20with-father-028fe4.svg)](https://github.com/umijs/father/) [![](https://badgen.net/badge/icon/Ant%20Design?icon=https://gw.alipayobjects.com/zos/antfincdn/Pp4WPgVDB3/KDpgvguMpGfqaHPjicRK.svg&label)](https://ant.design) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+为了解决上述的问题, **lerna** 这款工具诞生了, 它可以方便的管理具有多个包的 **JavaScript** 项目。同时对于组件包的开发者和维护者,  为了让团队其他成员更好的理解和使用我们开发的组件, 搭建组件文档和 **demo** 就显得格外重要.
 
-## 🖥 Browser compatibility
+![image.png](http://cdn.dooring.cn/dr/1633426696834.png)
 
-- Modern browsers and Internet Explorer 11 (with [polyfills](https://stackoverflow.com/questions/57020976/polyfills-in-2019-for-ie11))
-- [Electron](https://www.electronjs.org/)
+我们对以上提到的几点问题做一个总结:
 
-| [![edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png)](http://godban.github.io/browsers-support-badges/) | [![Edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png)](http://godban.github.io/browsers-support-badges/) | [![chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png)](http://godban.github.io/browsers-support-badges/) | [![safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)](http://godban.github.io/browsers-support-badges/) | [![electron_48x48](https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png)](http://godban.github.io/browsers-support-badges/) |
-| --- | --- | --- | --- | --- |
-| IE11, Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
+- 大型项目中如何管理组织依赖包及其版本问题
+- 如何高效低成本的搭建简单易用的组件文档
+- 如何配置eslint代码规范和代码提交规范
 
-## Contributing
+接下来我将针对以上问题一一来给出解答.  如果大家想看实际的案例, 可以参考:
 
-Any type of contribution is welcome, here are some examples of how you may contribute to this project 😃 ：
+- [best-cps | 基于lerna + dumi搭建的多包管理实践](https://github.com/MrXujiang/best-cps)
 
-- Use Ant Design Pro，umi, and ProComponents in your daily work.
-- Submit [issues](https://github.com/ant-design/pro-components/issues) to report bugs or ask questions.
-- Propose [pull requests](https://github.com/ant-design/pro-components/pulls) to improve our code.
+相关采用 lerna 的项目:
 
-## Component Kanban
+| home🏠     | demo✨ |  doc📦   |  tutorial |  wiki |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| [website](http://h5.dooring.cn) | [Demo](http://h5.dooring.cn/h5_plus) | [Document](http://h5.dooring.cn/doc) | [视频&Video](https://www.zhihu.com/zvideo/1406394315950653440) | [wiki](https://github.com/MrXujiang/h5-Dooring/wiki)
 
-| Components | Downloads | Downloads a version | Gzipped Size |
-| --- | --- | --- | --- |
-| pro-layout | [![layout](https://img.shields.io/npm/dw/@ant-design/pro-layout.svg)](https://www.npmjs.com/package/@ant-design/pro-layout) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-layout.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-layout) | [![](https://img.badgesize.io/https:/unpkg.com/@ant-design/pro-layout/dist/layout.min.js?label=Gzipped%20JS&compression=gzip&style=flat-square)](https://unpkg.com/browse/@ant-design/pro-layout/dist/layout.min.js) |
-| pro-table | [![table](https://img.shields.io/npm/dw/@ant-design/pro-table.svg)](https://www.npmjs.com/package/@ant-design/pro-table) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-table.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-table) | [![](https://img.badgesize.io/https:/unpkg.com/@ant-design/pro-table/dist/table.min.js?label=Gzipped%20JS&compression=gzip&style=flat-square)](https://unpkg.com/browse/@ant-design/pro-table/dist/table.min.js) |
-| pro-field | [![field](https://img.shields.io/npm/dw/@ant-design/pro-field.svg)](https://www.npmjs.com/package/@ant-design/pro-field) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-field.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-field) | [![](https://img.badgesize.io/https:/unpkg.com/@ant-design/pro-field/dist/field.min.js?label=Gzipped%20JS&compression=gzip&style=flat-square)](https://unpkg.com/browse/@ant-design/pro-field/dist/field.min.js) |
-| pro-form | [![form](https://img.shields.io/npm/dw/@ant-design/pro-form.svg)](https://www.npmjs.com/package/@ant-design/pro-form) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-form.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-form) | [![](https://img.badgesize.io/https:/unpkg.com/@ant-design/pro-form/dist/form.min.js?label=Gzipped%20JS&compression=gzip&style=flat-square)](https://unpkg.com/browse/@ant-design/pro-form/dist/form.min.js) |
-| pro-skeleton | [![skeleton](https://img.shields.io/npm/dw/@ant-design/pro-skeleton.svg)](https://www.npmjs.com/package/@ant-design/pro-skeleton) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-skeleton.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-skeleton) | [![](https://img.badgesize.io/https:/unpkg.com/@ant-design/pro-skeleton/dist/skeleton.min.js?label=Gzipped%20JS&compression=gzip&style=flat-square)](https://unpkg.com/browse/@ant-design/pro-skeleton/dist/skeleton.min.js) |
-| pro-list | [![list](https://img.shields.io/npm/dw/@ant-design/pro-list.svg)](https://www.npmjs.com/package/@ant-design/pro-list) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-list.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-list) | [![](https://img.badgesize.io/https:/unpkg.com/@ant-design/pro-list/dist/list.min.js?label=Gzipped%20JS&compression=gzip&style=flat-square)](https://unpkg.com/browse/@ant-design/pro-list/dist/list.min.js) |
-| pro-card | [![card](https://img.shields.io/npm/dw/@ant-design/pro-card.svg)](https://www.npmjs.com/package/@ant-design/pro-card) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-card.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-card) | [![](https://img.badgesize.io/https:/unpkg.com/@ant-design/pro-card/dist/card.min.js?label=Gzipped%20JS&compression=gzip&style=flat-square)](https://unpkg.com/browse/@ant-design/pro-card/dist/card.min.js) |
-| pro-descriptions | [![descriptions](https://img.shields.io/npm/dw/@ant-design/pro-card.svg)](https://www.npmjs.com/package/@ant-design/pro-descriptions) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-descriptions.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-descriptions) | [![](https://img.badgesize.io/https:/unpkg.com/@ant-design/pro-descriptions/dist/descriptions.min.js?label=Gzipped%20JS&compression=gzip&style=flat-square)](https://unpkg.com/browse/@ant-design/pro-descriptions/dist/descriptions.min.js) |
+## 大型项目中如何管理组织依赖包及其版本问题
 
-## LICENSE
+这个问题主要用我上面的提到的 **lerna** 工具来解决. 目前我们比较熟悉的 **babel**, **create-react-app**, **vue-cli** 等都使用了 **lerna**. 
 
-MIT
+在没使用 **lerna** 时, 我们不同库的组织形式可能如下:
+
+![image.png](http://cdn.dooring.cn/dr/1633429548344.png)
+
+使用 **lerna** 之后的库组织结构:
+
+![image.png](http://cdn.dooring.cn/dr/1633429780559.png)
+
+以上两个是我做的简图, 基本可以对比出使用 **lerna** 前后的差异,  **lerna** 的作用是把多个项目或模块拆分为多个 **packages** 放入一个git仓库进行管理。我们可以使用它提供的命令轻松的对不同项目进行管理 , 如下:
+
+- lerna boostrap 自动解决packages之间的依赖关系，对于packages内部的依赖会直接采用symlink的方式关联
+- lerna publish 依赖git检测文件改动，自动发布，管理版本号
+- lerna create 创建一个 lerna 管理的package包
+- lerna clean 删除所有包下面的node_modules目录，也可以删除指定包下面的node_modules
+
+同时 **lerna** 还会根据 git 提交记录，自动生成 changelog. 当然 **lerna** 还提供了很多有用的命令, 大家感兴趣可以在官网学习.
+
+## 如何高效低成本的搭建简单易用的组件文档
+
+对于组件文档, 市面上也有很多开源的工具, 比如 vue-press, storybook, docz等, 因为我最近的项目多为 react, 这里我使用的是 dumi. 之前在分享实现滑动验证码组件的时候已经和大家分享的 dumi的使用, 大家可以参考我之前的文章:
+- [从零开发一款轻量级滑动验证码插件](https://juejin.cn/post/7007615666609979400)
+
+以下是在 lerna 项目中集成 dumi 后的文档站点效果:
+
+![image.png](http://cdn.dooring.cn/dr/1633431582693.png)
+
+## 如何配置eslint代码规范和代码提交规范
+
+eslint 代码规范我想每个朋友都不陌生, 我们只需要安装对应的插件并编写对应规则的配置文件即可, 这里举一个简单的例子:
+
+``` js
+// .eslintrc.js
+module.exports = {
+  extends: [require.resolve('@umijs/fabric/dist/eslint')],
+  rules: {
+    'import/no-extraneous-dependencies': 0,
+    'import/no-unresolved': 0,
+  },
+};
+```
+配置好之后我们需要设置检测时机, 比如说时运行时检测还是提交时检测, 由于个人习惯和效率问题, 我采用了提交时检测, 也就是当开发者功能开发完成, 执行 git commit 的时候进行检测, 我们可以利用 githook 来做预提交检测, 这里需要在 package.json 文件中添加如下命令:
+``` js
+"gitHooks": {
+    "pre-commit": "npm run lint:js"
+  },
+```
+配置好之后我们随便写一行不合规范的代码, 然后提交, 终端会显示如下信息:
+
+![image.png](http://cdn.dooring.cn/dr/1633432745182.png)
+
+从控制台可以发现代码不合规范的位置和原因, 如果我们没有做出调整, 代码就无法提交, 通过这样的方式可以提高代码质量和出错概率, 非常有长远价值.
+
+同时上面提到了 githooks, 对于 githooks 的知识也非常有意思, 它可以帮我们在代码提交的不同阶段进行自定义操作, 比如代码提交前的检测, 代码提交信息规范等进行校验, 常用的 gtihooks 有:
+
+- pre-commit
+- prepare-commit-msg
+- commit-msg
+- post-commit
+- pre-rebase
+- post-merge
+- pre-receive
+- update
+
+大家感兴趣的可以访问 https://githooks.com 获取更多有关 githooks的内容.
+
+对于代码提交规范, 我们也需要做统一管理, 这样能让团队更直观的知道每一次提交的内容是什么, 尤其是多人协作的时候. 以下是几个常见的提交不规范的例子:
+
+```
+git commit -m '添加弹窗'
+git commit -m ':update 更新'
+git commit -m 'fix 修复一个bug'
+```
+之所以会存在以上提交格式不统一或者提交信息难懂的问题, 都是因为缺少了规范的制约, 所以说对于大型项目或者多人协作的项目, 最好还是统一规范, 这样能提前避免很多不必要的麻烦.
+
+要想实现对工程师提交信息的检测, 需要用到 commit-msg 这个 githooks, 具体配置如下:
+
+```js
+"gitHooks": {
+    "pre-commit": "npm run lint:js",
+    "commit-msg": "node ./commitlint.js verify-commit"
+  }
+```
+
+剩下的就是 commitlint.js 做的事情了, 它是我编写的一个 nodejs 脚本, 用来检测用户提交的信息是否规范, 当然大家也可以基于这个脚本定义自己的提交规范, 具体效果如下:
+
+![image.png](http://cdn.dooring.cn/dr/1633434527477.png)
+
+我们可以看到, 当我们提交了一个不符合规范的信息之后, 终端控制台会打印如下提示信息并终止程序继续进行. 
+
+通过以上的配置,  团队不同成员的写的代码和提交信息都会非常统一和规范, 项目整体的质量也会得到一定的提升.
+
+
+
+
